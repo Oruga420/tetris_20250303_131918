@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Game Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .status {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tetris Game Loading Test</h1>
+    <div class="status" id="status">Checking resources...</div>
+    
+    <script>
+        const status = document.getElementById('status');
+        
+        // Test if JavaScript is working
+        status.innerHTML += "<p>✓ JavaScript is working</p>";
+        
+        // Check if tetris.js exists
+        const scriptTest = document.createElement('script');
+        scriptTest.src = 'js/tetris.js';
+        scriptTest.onload = function() {
+            status.innerHTML += "<p>✓ tetris.js loaded successfully</p>";
+        };
+        scriptTest.onerror = function() {
+            status.innerHTML += "<p>❌ Could not load tetris.js</p>";
+        };
+        document.body.appendChild(scriptTest);
+        
+        // Check if style.css exists
+        const linkTest = document.createElement('link');
+        linkTest.rel = 'stylesheet';
+        linkTest.href = 'css/style.css';
+        linkTest.onload = function() {
+            status.innerHTML += "<p>✓ style.css loaded successfully</p>";
+        };
+        linkTest.onerror = function() {
+            status.innerHTML += "<p>❌ Could not load style.css</p>";
+        };
+        document.head.appendChild(linkTest);
+        
+        // Check canvas support
+        const canvasTest = document.createElement('canvas');
+        if (canvasTest.getContext) {
+            status.innerHTML += "<p>✓ Canvas is supported</p>";
+        } else {
+            status.innerHTML += "<p>❌ Canvas is not supported</p>";
+        }
+    </script>
+</body>
+</html>
